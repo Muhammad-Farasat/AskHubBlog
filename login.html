@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn</title>
+    <link rel="shortcut icon" href="./logo-2.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="./Logo-2.png" class="pic">
+        </div>
+        <div class="main">
+            <div class="heading-l">
+                <h3>Log In</h3>
+            </div>
+            <div class="inputfeild">
+                <div class="email">
+                    <label for="mail">Email</label>
+                    <input type="email" id="mail">
+                </div>
+                <div class="password">
+                    <label for="pass">Password</label>
+                    <input type="password" id="pass">
+                </div>
+                <div class="para"><p class="message">User not Found!</p></div>
+                <div class="footer-l">
+                <div class="btn">
+                    <button class="log-in">Log in</button>
+                </div>
+                <div class="forgot">
+                    <p>Don't have Account?</p>
+                    <a href="./signup.html">SignUp</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

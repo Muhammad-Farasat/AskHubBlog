@@ -1,0 +1,121 @@
+*{
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #2c2c2c;
+}
+.container{
+    display: flex;
+}
+.main{
+    background-color: #424242;
+    height: 68vh;
+    width: 30vw;
+    margin: 14vh auto;
+    margin-right: 10vw;
+    border: 1px solid #666666;
+    border-radius: 16px;
+}
+.heading{
+    text-align: center;
+    color: white;
+    font-size: 26px;
+    margin-top: 12px;
+}
+.inputfeild{
+    margin: 50px auto;
+    margin-left: 2vw;
+    color: #ffff;
+    
+}
+input{
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #ffff;
+    width: 90%;
+    outline: none;
+    transition: border-bottom-color 0.3s ease;
+    color: #ffff;
+}
+input:focus{
+    border-bottom-color: #007bff;
+}
+label{
+    padding-bottom: 1vh;
+}
+.username{
+    display: flex;
+    flex-direction:column;
+    padding-bottom: 28px;
+    margin-top: 2vh;
+}
+.email{
+    display: flex;
+    flex-direction:column;
+    padding-bottom: 28px;
+    margin-top: 2vh;
+}
+.password{
+    display: flex;
+    flex-direction:column;
+    padding-bottom: 28px;
+    margin-top: 2vh;
+}
+.btn{
+    width: 90%;
+}
+button{
+    width: 90%;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #4adb4f;
+    border: none;
+    border-radius: 12px;
+    color: #ffff;
+}
+.footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.forgot{
+    display: flex;
+    margin-top: 2vh;
+}
+.forgot a{
+    color: #4adb4f;
+}
+.pic{
+    /* height: 6vh; */
+    width: 20vw;
+    margin: 24vh 14vw;
+}
+
+/* For Login Page!!! */
+
+.footer-l{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin-top: 4vh;
+}
+.heading-l{
+    text-align: center;
+    color: white;
+    font-size: 26px;
+    margin-top: 16px;
+}
+
+.para p{
+    display: none;
+    color: red;
+    text-align: center;
+}

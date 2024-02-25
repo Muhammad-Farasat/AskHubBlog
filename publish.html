@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AskHubBlog-Publish</title>
+    <link rel="stylesheet" href="./output.css">
+</head>
+
+<body class="bg-[#2C2C2C] w-100%">
+
+    <nav class="bg-[#333333]  text-white flex justify-between items-center px-6 py-1.5">
+
+        <div class="logo ml-2">
+            <img src="./Logo-2.png" alt="logo" class="w-14 ">
+        </div>
+        <div class="mr-16">
+            <button onclick="location.href='./login.html'"
+                class="bg-[#4CAF50] hover:bg-[#388E3C] px-6 py-1.5 rounded-md font-semibold">Logout</button>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="heading px-7 py-6 mt-1 ">
+            <h1 class="text-white font-bold text-3xl">Create Blog or ask Question</h1>
+        </div>
+        <div class="line border-b-2 w-11/12	 ml-7 "></div>
+
+        <div class="section3 mt-4">
+            <div class="section3-child flex justify-between px-8">
+                <div class="left">
+                    <h1 class="text-white font-bold text-2xl">Title</h1>
+                    <input id="titleInput" type="text" placeholder="Enter Title"
+                        class="w-60 py-1 pl-1.5 pr-20 rounded-sm active:outline-0 focus:outline-0 ">
+                </div>
+                <div class="right pr-20 ">
+                    <h1 class="text-white font-bold text-2xl pb-1">Select Category</h1>
+                    <select id="categorySelect" name="Select" class=" px-20 py-0.5">
+                        <option value="Select Category">Select Category</option>
+                        <option value="HTMl">HTML</option>
+                        <option value="Css">Css</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="React">React</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="section4 mt-6">
+            <div class="section4-child mx-8 flex justify-between">
+                <div class="left4 text-white">
+                    <h1 class="text-2xl font-bold mb-2">Select Type</h1>
+                    <div class="input flex space-x-28">
+                        <div class="input1">
+                            <input type="radio" id="blog" name="type"> <label for="blog"
+                                class="text-xl font-semibold">Blog</label>
+                        </div>
+                        <div class="input2">
+                            <input type="radio" id="question" name="type"> <label for="question"
+                                class="text-xl font-semibold">Question</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="right4 text-white pr-[12.5rem]">
+                    <h1 class="text-2xl font-bold mb-2">Select Status</h1>
+                    <div class="input flex gap-4">
+                        <div class="input1">
+                            <input type="radio" id="active" name="status"> <label for="active"
+                                class="text-xl font-semibold">Active</label>
+                        </div>
+                        <div class="input2">
+                            <input type="radio" id="Inactive" name="status"> <label for="Inactive"
+                                class="text-xl font-semibold">Inactive</label>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div class="section5 mt-8">
+            <div class="image-upload text-white ml-8 mb-6">
+                <h2 class="font-semibold text-xl">Upload Image</h2>
+                <input type="file"> 
+              </div>
+            <div class="section5-child text-white ml-8">
+                <h1 class="text-2xl font-semibold pb-2">Description</h1>
+                <textarea name="" id="descriptionInput" cols="100" rows="5" class="text-black"></textarea>
+            </div>
+        </div>
+        <footer class="mt-8">
+            <div class="ml-8 ">
+                <div class="btns text-white font-semibold flex gap-6">
+                    <button id="saveBtn" class="bg-[#4CAF50] hover:bg-[#388E3C] py-1 px-8 rounded-md">Save</button>
+                    <button onclick="location.href='./index.html'"
+                        class="bg-[#4CAF50] hover:bg-[#388E3C] py-1 px-8 rounded-md ">Cancel</button>
+                </div>
+            </div>
+        </footer>
+
+        
+        <script type="module" src="./publish.js"></script>
+</body>
+
+</html>
