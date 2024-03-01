@@ -18,17 +18,18 @@
             </div>
             <div class="inputfeild">
                 <div class="email">
-                    <label for="mail">Email</label>
+                    <label for="mail">Email*</label>
                     <input type="email" id="mail">
                 </div>
                 <div class="password">
-                    <label for="pass">Password</label>
+                    <label for="pass">Password*</label>
                     <input type="password" id="pass">
                 </div>
-                <div class="para"><p class="message">User not Found!</p></div>
+                <div class="para"><p id="msg">User not Found!</p></div>
                 <div class="footer-l">
                 <div class="btn">
-                    <button class="log-in">Log in</button>
+                    <button id="log-in">Log in</button>
+
                 </div>
                 <div class="forgot">
                     <p>Don't have Account?</p>
@@ -38,9 +39,6 @@
             </div>
         </div>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-    <script type="module" src="./script.js"></script>
+    <script type="module" src="./login.js"></script>
 </body>
 </html>

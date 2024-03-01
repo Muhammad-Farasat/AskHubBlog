@@ -12,7 +12,7 @@
 
     <nav class="bg-[#333333]  text-white flex justify-between items-center px-6 py-1.5">
 
-        <div class="logo ml-2">
+        <div class="logo ml-16">
             <img src="./Logo-2.png" alt="logo" class="w-14 ">
         </div>
         <div class="mr-16">
@@ -22,13 +22,12 @@
     </nav>
 
     <div class="main">
-        <div class="heading px-7 py-6 mt-1 ">
+        <div class="heading pl-20 py-6 mt-1 ">
             <h1 class="text-white font-bold text-3xl">Create Blog or ask Question</h1>
         </div>
-        <div class="line border-b-2 w-11/12	 ml-7 "></div>
-
+        <div class="line border-b-2 w-[89%]	ml-20 "></div>
         <div class="section3 mt-4">
-            <div class="section3-child flex justify-between px-8">
+            <div class="section3-child flex justify-between pl-20">
                 <div class="left">
                     <h1 class="text-white font-bold text-2xl">Title</h1>
                     <input id="titleInput" type="text" placeholder="Enter Title"
@@ -48,17 +47,17 @@
             </div>
         </div>
         <div class="section4 mt-6">
-            <div class="section4-child mx-8 flex justify-between">
+            <div class="section4-child pl-20 flex justify-between">
                 <div class="left4 text-white">
                     <h1 class="text-2xl font-bold mb-2">Select Type</h1>
                     <div class="input flex space-x-28">
                         <div class="input1">
-                            <input type="radio" id="blog" name="type"> <label for="blog"
-                                class="text-xl font-semibold">Blog</label>
+                            <input type="radio" id="blog" name="type"> 
+                            <label for="blog"class="text-xl font-semibold">Blog</label>
                         </div>
                         <div class="input2">
-                            <input type="radio" id="question" name="type"> <label for="question"
-                                class="text-xl font-semibold">Question</label>
+                            <input type="radio" id="question" name="type"> 
+                            <label for="question" class="text-xl font-semibold">Question</label>
                         </div>
                     </div>
                 </div>
@@ -66,8 +65,8 @@
                     <h1 class="text-2xl font-bold mb-2">Select Status</h1>
                     <div class="input flex gap-4">
                         <div class="input1">
-                            <input type="radio" id="active" name="status"> <label for="active"
-                                class="text-xl font-semibold">Active</label>
+                            <input type="radio" id="active" name="status"> 
+                            <label for="active" class="text-xl font-semibold">Active</label>
                         </div>
                         <div class="input2">
                             <input type="radio" id="Inactive" name="status"> <label for="Inactive"
@@ -76,24 +75,20 @@
                         
                     </div>
                 </div>
-            </div>
-
-
-
-
+        </div>
         </div>
         <div class="section5 mt-8">
-            <div class="image-upload text-white ml-8 mb-6">
+            <div class="image-upload text-white ml-20 mb-6">
                 <h2 class="font-semibold text-xl">Upload Image</h2>
                 <input type="file"> 
               </div>
-            <div class="section5-child text-white ml-8">
+            <div class="section5-child text-white ml-20">
                 <h1 class="text-2xl font-semibold pb-2">Description</h1>
                 <textarea name="" id="descriptionInput" cols="100" rows="5" class="text-black"></textarea>
             </div>
         </div>
         <footer class="mt-8">
-            <div class="ml-8 ">
+            <div class="ml-20 ">
                 <div class="btns text-white font-semibold flex gap-6">
                     <button id="saveBtn" class="bg-[#4CAF50] hover:bg-[#388E3C] py-1 px-8 rounded-md">Save</button>
                     <button onclick="location.href='./index.html'"
@@ -102,7 +97,7 @@
             </div>
         </footer>
 
-        
+    </div>
         <script type="module" src="./publish.js"></script>
 </body>
 

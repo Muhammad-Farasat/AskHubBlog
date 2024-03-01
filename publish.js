@@ -1,11 +1,13 @@
+//<-----------Import FireBase---------------->
+// import auth from "basic-auth";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged ,signOut} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-  import {  getFirestore,collection, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-  import { getStorage,ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+import {getFirestore, collection, addDoc, Timestamp,} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import {getAuth} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-  
-  const firebaseConfig = {
-    apiKey: "AIzaSyALIayX15MobwzJMDdnYGxLbp1WF1oZ_58",
+
+//<-----------API key------------>
+const firebaseConfig = {
+  apiKey: "AIzaSyALIayX15MobwzJMDdnYGxLbp1WF1oZ_58",
   authDomain: "farasat-ask-hub-blog.firebaseapp.com",
   databaseURL: "https://farasat-ask-hub-blog-default-rtdb.firebaseio.com",
   projectId: "farasat-ask-hub-blog",
@@ -13,226 +15,66 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebas
   messagingSenderId: "557630976948",
   appId: "1:557630976948:web:443d1263e1a6c3ad80f8e1",
   measurementId: "G-HND7GC8L67"
-  };
-
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-  const storage = getStorage(app);
-
-let currentPage = window.location.pathname.split('/').pop();
-let writeBtn = document.getElementById("writeBtn");
-console.log(currentPage)
-
-
-// radio Button Value chec ///
-
-
-
-let saveBtn =document.getElementById("save");
-
-
-
-
-
-
-
-
-
-const imageUpload = () => {
-  return new Promise((resolve, reject) => {
-    const fileEl = document.getElementById("file");
-    const file = fileEl.files[0];
-
-    if (!file) {
-      reject(new Error("No file selected."));
-      return;
-    }
-
-    const metadata = {
-      name: file.name,
-      size: file.size,
-      type: file.type,
-    };
-
-    const fileName = `${file.name}_${Date.now()}`;
-    const storageRef = ref(storage, 'images/' + fileName);
-    const uploadTask = uploadBytesResumable(storageRef, file, metadata);
-
-    uploadTask.on('state_changed',
-      (snapshot) => {
-        // Track upload progress if needed
-      },
-      (error) => {
-        reject(error); // Reject promise on upload error
-      },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref)
-          .then((downloadURL) => {
-            resolve(downloadURL); // Resolve promise with download URL
-          })
-          .catch((error) => {
-            reject(error); // Reject promise if getting download URL fails
-          });
-      }
-    );
-  });
 };
 
+//<--------------Initilize FireBase------------->
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+//<------------Initilize HTMl--------------->
+
+// debugger
+
+const saveBtn = document.getElementById("saveBtn");
+
+    saveBtn.addEventListener("click", async () => {
+        const title = document.getElementById("titleInput").value;
+        const category = document.getElementById("categorySelect").value;
+        const type = document.querySelector('input[name="type"]:checked').value;
+        const status = document.querySelector('input[name="status"]:checked').value;
+        const description = document.getElementById("descriptionInput").value;
+        const currentUser = auth.currentUser;
+        const username = currentUser.displayName;
+        
+        // function firebaseTimestampToDate(timestamp) {
+        //     // Convert Firebase timestamp to milliseconds
+        //     const milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000;
+            
+        //     // Create a new Date object using milliseconds
+        //     const date = new Date(milliseconds);
+        
+        //     return date;
+        // }
+
+        // const firebaseTimestamp = { seconds: 1614570000, nanoseconds: 0 };
 
 
+        // const date = firebaseTimestampToDate(firebaseTimestamp);
+        // console.log(date);
+        
 
-const writeBlog = async ()=>{
+        if (!currentUser) {
+            alert("User not signed in!");
+            console.error("Please Sign up first!");
+            return;
+        }
 
-  let typeVal =null;
-  let statusVal=null;
-
-  
-   
-
-//<****** Get title Value *****>
-
-let title = document.getElementById("title");
-let titleVal = title.value;
-console.log(titleVal)
-
-//<****** value checked for status *****>  
-  let selection =document.getElementById("category")
-let slectionVal =selection.value;
-console.log(slectionVal)
-  // <*******value check for type *******>
-  let typeValRadio = document.getElementsByName("type")
-  for(let i=0 ;i<typeValRadio.length ; i++){
-    if(typeValRadio[i].checked){
-         typeVal =typeValRadio[i].value;
-         console.log(typeVal)
-    }
-  }
-
-//<****** value checked for status *****>
-
-  let radioBtnValue = document.getElementsByName("status")
-  for(let i=0 ;i<radioBtnValue.length ; i++){
-    if(radioBtnValue[i].checked){
-         statusVal =radioBtnValue[i].value;
-         console.log(statusVal)
-    }
-  }
-
-//<****** Get value of description  *****>
-
-
-  let description =document.getElementById("description")
-  let descriptionVal =description.value;
-
-  //<****** Get Image from database  *****>
-
-
-
-
-  let imageUrl;
-  try {
-    imageUrl = await imageUpload();
-  } catch (error) {
-    console.error("Error uploading image:", error);
-    return; // Exit function if image upload fails
-  }
-
-
-
-
-  const checkLogin2 =()=>{
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-       
-        const uid = user.uid;
-     
-      //  user = auth.currentUser;
-      console.log(auth.currentUser)
-        // ...
-      } else {
-        // User is signed out
-        // ...
-      
-      }
-  
-      
+        try {
+            // Add blog data to Firestore
+            const docRef = await addDoc(collection(db, "blogs"), {
+                title: title,
+                category: category,
+                type: type,
+                status: status,
+                description: description,
+                username: username,
+            });
+             console.log("Blog published with ID: ", docRef.id);
+            // Redirect to index page or show success message
+            window.location.href = "./index.html";
+        } catch (error) {
+            console.log("Error adding blog: ", error);
+            alert("Something went wrong!")
+        }
     });
-  }
-  
-  checkLogin2()
-  
-
-
-  const id = new Date().getTime()
-  const payload ={
-    id:id,
-    title:titleVal,
-    option:slectionVal,
-    typeValue:typeVal,
-    statusValue:statusVal,
-    description:descriptionVal,
-    imageUrl:imageUrl ,
-    date:id,
-    userName:auth.currentUser.displayName
-    
-    
-  
-  }
-
-
-  // await setDoc(doc(db, "Blogs", `${id}`), payload)
-  try {
-    await setDoc(doc(db, "Blogs", `${id}`), payload);
-    console.log("Blog successfully written to Firestore.");
-    alert("Successfully upload")
-    titleVal="";
-    slectionVal="";
-  } catch (error) {
-    console.error("Error writing blog to Firestore:", error);
-  }
-   
-}
-
-
-
-
-
-
-
-
-
-saveBtn && saveBtn.addEventListener("click",writeBlog)
-
-
-
-
-
-
-
-
-// <-------LOG OUT FUNCTION------->
-
-
-let logout = (e)=>{
-  e.preventDefault(); 
-  signOut(auth).then(() => {
-    // Sign-out successful.
-    if(currentPage !=="index.html"){
-      window.location.href="index.html"
-    }
-   console.log("hello")
-  }).catch((error) => {
-    // An error happened.
-  });
-
-  
-}
-
-let logoutBtn = document.getElementById("logoutBtn");
-logoutBtn && logoutBtn.addEventListener("click",logout)
-
-// <-------CLOSE------->

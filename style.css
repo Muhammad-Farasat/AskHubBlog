@@ -41,7 +41,7 @@ input{
     color: #ffff;
 }
 input:focus{
-    border-bottom-color: #007bff;
+    border-bottom-color: #4adb4f;
 }
 label{
     padding-bottom: 1vh;
@@ -118,4 +118,8 @@ button{
     display: none;
     color: red;
     text-align: center;
+    padding-right: 2rem;
+}
+button{
+    cursor: pointer;
 }
